@@ -6,23 +6,23 @@
   <title>iki gözümsün ronyam 💖</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --pink: #ec4899;
-      --rose: #f43f5e;
-      --purple: #a855f7;
-      --indigo: #6366f1;
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: #0f0a1a;
       color: #fff;
       overflow-x: hidden;
-      cursor: default;
+    }
+
+    /* ============ HEART EXPLOSION OVERLAY ============ */
+    #explosion-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
     }
 
     /* ============ HEART PARTICLES ============ */
@@ -99,16 +99,20 @@
     }
 
     .hero h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-family: 'Inter', 'Arial Black', 'Impact', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 9vw, 6rem);
+      text-transform: uppercase;
+      letter-spacing: 2px;
       background: linear-gradient(135deg, #f9a8d4, #ec4899, #a855f7, #6366f1);
       background-size: 300% 300%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       animation: gradientShift 4s ease-in-out infinite;
-      line-height: 1.2;
+      line-height: 1.1;
       margin-bottom: 1.5rem;
+      text-shadow: none;
     }
 
     @keyframes gradientShift {
@@ -117,11 +121,13 @@
     }
 
     .hero .subtitle {
+      font-family: 'Inter', sans-serif;
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: rgba(255,255,255,0.7);
-      font-weight: 300;
+      font-weight: 600;
       margin-bottom: 2.5rem;
       line-height: 1.8;
+      letter-spacing: 1px;
     }
 
     .hero .subtitle span {
@@ -224,7 +230,7 @@
     .section-title {
       text-align: center;
       font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 1rem;
     }
 
@@ -240,7 +246,7 @@
       color: rgba(255,255,255,0.5);
       max-width: 600px;
       margin: 0 auto 3rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.7;
     }
 
@@ -249,7 +255,7 @@
       margin: 0 auto;
     }
 
-    /* ============ ABOUT / LOVE STORY ============ */
+    /* ============ ABOUT ============ */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -283,7 +289,7 @@
 
     .about-card h3 {
       font-size: 1.3rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 0.8rem;
     }
 
@@ -374,7 +380,7 @@
     .timeline-item .time-content .date {
       font-size: 0.75rem;
       color: #ec4899;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 0.3rem;
@@ -382,7 +388,7 @@
 
     .timeline-item .time-content h4 {
       font-size: 1.1rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 0.4rem;
     }
 
@@ -436,14 +442,12 @@
       transition: opacity 0.3s ease;
     }
 
-    .gallery-item:hover .overlay {
-      opacity: 1;
-    }
+    .gallery-item:hover .overlay { opacity: 1; }
 
     .gallery-item .overlay span {
       color: #fff;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* ============ MESSAGE ============ */
@@ -484,21 +488,11 @@
       z-index: 1;
     }
 
-    .message-box .quote-mark {
-      font-size: 4rem;
-      font-family: 'Dancing Script', cursive;
-      background: linear-gradient(135deg, #f9a8d4, #ec4899);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
     .message-box blockquote {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      line-height: 1.8;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      line-height: 1.7;
       color: rgba(255,255,255,0.85);
       margin-bottom: 1.5rem;
     }
@@ -506,6 +500,7 @@
     .message-box .author {
       font-size: 0.9rem;
       color: rgba(255,255,255,0.4);
+      font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
@@ -535,7 +530,7 @@
 
     .countdown-item .number {
       font-size: 2.5rem;
-      font-weight: 700;
+      font-weight: 900;
       background: linear-gradient(135deg, #f9a8d4, #a855f7);
       -webkit-background-clip: text;
       background-clip: text;
@@ -545,6 +540,7 @@
     .countdown-item .label {
       font-size: 0.75rem;
       color: rgba(255,255,255,0.4);
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-top: 0.3rem;
@@ -622,12 +618,64 @@
       z-index: 0;
       pointer-events: none;
     }
+
+    /* ============ LOADER ============ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #0f0a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2rem;
+      transition: opacity 0.8s ease-out;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #loader .heart-pulse {
+      font-size: 5rem;
+      animation: loaderPulse 0.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes loaderPulse {
+      from { transform: scale(0.8); opacity: 0.5; }
+      to { transform: scale(1.3); opacity: 1; }
+    }
+
+    #loader .loader-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      animation: loaderText 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes loaderText {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
 
+  <div id="loader">
+    <div class="heart-pulse">💖</div>
+    <div class="loader-text">Ronyam...</div>
+  </div>
+
   <!-- Stars Canvas -->
   <canvas id="stars"></canvas>
+
+  <!-- Heart Explosion Canvas -->
+  <canvas id="explosion-canvas"></canvas>
 
   <!-- Heart Particles Canvas -->
   <canvas id="particles-canvas"></canvas>
@@ -741,30 +789,12 @@
         Henüz fotoğraf karesine sığdıramadığımız, ama kalbimizde biriktirdiğimiz anılar...
       </p>
       <div class="gallery">
-        <div class="gallery-item scale-in" style="animation-delay: 0.1s">
-          🌅
-          <div class="overlay"><span>Gün Batımları</span></div>
-        </div>
-        <div class="gallery-item scale-in" style="animation-delay: 0.2s">
-          ☕
-          <div class="overlay"><span>Kahve Kokusu</span></div>
-        </div>
-        <div class="gallery-item scale-in" style="animation-delay: 0.3s">
-          🌙
-          <div class="overlay"><span>Ay Işığı</span></div>
-        </div>
-        <div class="gallery-item scale-in" style="animation-delay: 0.4s">
-          🎵
-          <div class="overlay"><span>Bizim Şarkımız</span></div>
-        </div>
-        <div class="gallery-item scale-in" style="animation-delay: 0.5s">
-          📖
-          <div class="overlay"><span>Yarım Kalan Hikaye</span></div>
-        </div>
-        <div class="gallery-item scale-in" style="animation-delay: 0.6s">
-          💫
-          <div class="overlay"><span>Sonsuzluk</span></div>
-        </div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.1s">🌅<div class="overlay"><span>Gün Batımları</span></div></div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.2s">☕<div class="overlay"><span>Kahve Kokusu</span></div></div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.3s">🌙<div class="overlay"><span>Ay Işığı</span></div></div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.4s">🎵<div class="overlay"><span>Bizim Şarkımız</span></div></div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.5s">📖<div class="overlay"><span>Yarım Kalan Hikaye</span></div></div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.6s">💫<div class="overlay"><span>Sonsuzluk</span></div></div>
       </div>
     </div>
   </section>
@@ -804,7 +834,6 @@
     <div class="container">
       <div class="message-box scale-in">
         <div class="content">
-          <div class="quote-mark">"</div>
           <blockquote>
             Gözlerimin gördüğü en güzel şeysin, kalbimin hissettiği en derin duygu. İki gözümsün, bir tanemsin. Seni her şeyden çok seviyorum Ronyam.
           </blockquote>
@@ -822,6 +851,122 @@
   </footer>
 
   <script>
+    // ============ SOUND (Web Audio API) ============
+    function playHeartSound() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [523.25, 659.25, 783.99, 1046.5];
+        notes.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.5);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + i * 0.12);
+          osc.stop(ctx.currentTime + i * 0.12 + 0.5);
+        });
+        for (let i = 0; i < 3; i++) {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.value = 1318.5;
+          gain.gain.setValueAtTime(0.15, ctx.currentTime + 0.5 + i * 0.2);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5 + i * 0.2 + 0.3);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + 0.5 + i * 0.2);
+          osc.stop(ctx.currentTime + 0.5 + i * 0.2 + 0.3);
+        }
+      } catch(e) {}
+    }
+
+    // ============ HEART EXPLOSION ============
+    const expCanvas = document.getElementById('explosion-canvas');
+    const expCtx = expCanvas.getContext('2d');
+
+    function resizeExplosionCanvas() {
+      expCanvas.width = window.innerWidth;
+      expCanvas.height = window.innerHeight;
+    }
+    resizeExplosionCanvas();
+    window.addEventListener('resize', resizeExplosionCanvas);
+
+    class ExplosionParticle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 18 + 5;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.size = Math.random() * 28 + 14;
+        this.life = 1;
+        this.decay = Math.random() * 0.008 + 0.005;
+        this.emoji = ['💖', '💕', '💗', '💝', '💘', '❤️', '🩷', '💞', '✨', '🌟'][Math.floor(Math.random() * 10)];
+        this.gravity = 0.08;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 6;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += this.gravity;
+        this.vx *= 0.98;
+        this.life -= this.decay;
+        this.rotation += this.rotSpeed;
+        this.size *= 0.997;
+      }
+      draw(ctx) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, this.life);
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.font = `${this.size}px serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(this.emoji, 0, 0);
+        ctx.restore();
+      }
+    }
+
+    let explosionParticles = [];
+    let explosionActive = true;
+
+    function triggerExplosion() {
+      const cx = expCanvas.width / 2;
+      const cy = expCanvas.height / 2;
+      for (let i = 0; i < 120; i++) {
+        explosionParticles.push(new ExplosionParticle(cx, cy));
+      }
+      setTimeout(() => { explosionActive = false; }, 3000);
+    }
+
+    function animateExplosion() {
+      expCtx.clearRect(0, 0, expCanvas.width, expCanvas.height);
+      explosionParticles = explosionParticles.filter(p => p.life > 0);
+      explosionParticles.forEach(p => { p.update(); p.draw(expCtx); });
+      if (explosionParticles.length > 0 || explosionActive) {
+        requestAnimationFrame(animateExplosion);
+      }
+    }
+
+    // ============ LOADER ============
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        triggerExplosion();
+        animateExplosion();
+        playHeartSound();
+        setTimeout(() => {
+          document.getElementById('explosion-canvas').style.zIndex = '-1';
+        }, 3000);
+      }, 1500);
+    });
+
     // ============ FLOATING HEARTS ============
     const heartsContainer = document.getElementById('floatingHearts');
     const heartEmojis = ['💖', '💕', '💗', '💝', '💘', '❤️', '🩷', '💞'];
@@ -890,9 +1035,7 @@
     window.addEventListener('resize', resizeParticleCanvas);
 
     class Particle {
-      constructor() {
-        this.reset();
-      }
+      constructor() { this.reset(); }
       reset() {
         this.x = Math.random() * pCanvas.width;
         this.y = Math.random() * pCanvas.height;
@@ -900,7 +1043,7 @@
         this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.5;
         this.opacity = Math.random() * 0.5 + 0.2;
-        this.hue = Math.random() * 60 + 320; // pink to purple range
+        this.hue = Math.random() * 60 + 320;
       }
       update() {
         this.x += this.speedX;
@@ -946,24 +1089,13 @@
       const now = new Date();
       const target = new Date('2026-06-15T00:00:00');
       const diff = Math.max(0, target - now);
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-      const s = Math.floor((diff % (1000*60)) / 1000);
-      document.getElementById('days').textContent = String(d).padStart(2, '0');
-      document.getElementById('hours').textContent = String(h).padStart(2, '0');
-      document.getElementById('minutes').textContent = String(m).padStart(2, '0');
-      document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+      document.getElementById('days').textContent = String(Math.floor(diff / (1000*60*60*24))).padStart(2, '0');
+      document.getElementById('hours').textContent = String(Math.floor((diff % (1000*60*60*24)) / (1000*60*60))).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(Math.floor((diff % (1000*60*60)) / (1000*60))).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(Math.floor((diff % (1000*60)) / 1000)).padStart(2, '0');
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    // ============ PARALLAX ON SCROLL ============
-    document.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      document.querySelector('.hero').style.transform = `translateY(${scrolled * 0.3}px)`;
-      document.querySelector('.hero').style.opacity = 1 - Math.min(scrolled / 600, 0.5);
-    });
   </script>
 </body>
 </html>
