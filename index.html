@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iki gözümsün ronyam 💖</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #ec4899;
+      --rose: #f43f5e;
+      --purple: #a855f7;
+      --indigo: #6366f1;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0a1a;
+      color: #fff;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ============ HEART PARTICLES ============ */
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ============ FLOATING HEARTS ============ */
+    .floating-hearts {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0;
+      animation: floatHeart linear infinite;
+      bottom: -50px;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(0deg) scale(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      50% { opacity: 0.6; }
+      90% { opacity: 0.2; }
+      100% { transform: translateY(-110vh) rotate(720deg) scale(1.2); opacity: 0; }
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(236,72,153,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 50%, rgba(168,85,247,0.1) 0%, transparent 50%),
+                  radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.1) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero .emoji-big {
+      font-size: 5rem;
+      display: inline-block;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.3); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.15); }
+      56% { transform: scale(1); }
+    }
+
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      background: linear-gradient(135deg, #f9a8d4, #ec4899, #a855f7, #6366f1);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 4s ease-in-out infinite;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero .subtitle span {
+      display: inline-block;
+      animation: shimmer 3s ease-in-out infinite;
+      background: linear-gradient(90deg, rgba(255,255,255,0.7), #f9a8d4, rgba(255,255,255,0.7));
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: -200% 50%; }
+      50% { background-position: 200% 50%; }
+    }
+
+    .hero-emojis {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .hero-emojis span {
+      font-size: 2rem;
+      display: inline-block;
+      animation: bounceEmoji 2s ease-in-out infinite;
+    }
+
+    .hero-emojis span:nth-child(2) { animation-delay: 0.2s; }
+    .hero-emojis span:nth-child(3) { animation-delay: 0.4s; }
+    .hero-emojis span:nth-child(4) { animation-delay: 0.6s; }
+    .hero-emojis span:nth-child(5) { animation-delay: 0.8s; }
+    .hero-emojis span:nth-child(6) { animation-delay: 1.0s; }
+    .hero-emojis span:nth-child(7) { animation-delay: 1.2s; }
+
+    @keyframes bounceEmoji {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* ============ SCROLL INDICATOR ============ */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeInScroll 2s ease-out 1.5s both;
+    }
+
+    @keyframes fadeInScroll {
+      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    .scroll-indicator .mouse {
+      width: 24px;
+      height: 38px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .scroll-indicator .mouse::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 2px;
+      animation: scrollWheel 1.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollWheel {
+      0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+    }
+
+    /* ============ SECTIONS ============ */
+    section {
+      position: relative;
+      z-index: 2;
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-title .highlight {
+      background: linear-gradient(135deg, #f9a8d4, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ============ ABOUT / LOVE STORY ============ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .about-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      backdrop-filter: blur(20px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(236,72,153,0.15);
+    }
+
+    .about-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .about-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-card p {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    /* ============ TIMELINE ============ */
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, #ec4899, #a855f7, transparent);
+    }
+
+    @media (max-width: 640px) {
+      .timeline::before { left: 20px; }
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item:nth-child(odd) { flex-direction: row; }
+    @media (min-width: 641px) {
+      .timeline-item:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+    }
+
+    @media (max-width: 640px) {
+      .timeline-item { flex-direction: row; padding-left: 3rem; }
+      .timeline-item .time-dot { left: 12px !important; }
+    }
+
+    .timeline-item .time-dot {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #a855f7);
+      box-shadow: 0 0 20px rgba(236,72,153,0.4);
+      position: relative;
+      z-index: 1;
+      margin-top: 5px;
+    }
+
+    @media (min-width: 641px) {
+      .timeline-item:nth-child(odd) .time-dot { order: 1; }
+      .timeline-item:nth-child(even) .time-dot { order: 1; }
+    }
+
+    .timeline-item .time-content {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 1rem;
+      padding: 1.2rem 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-item .time-content:hover {
+      transform: scale(1.02);
+      border-color: rgba(236,72,153,0.3);
+    }
+
+    .timeline-item .time-content .date {
+      font-size: 0.75rem;
+      color: #ec4899;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-item .time-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-item .time-content p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ============ GALLERY ============ */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: linear-gradient(135deg, rgba(236,72,153,0.2), rgba(168,85,247,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 40px rgba(236,72,153,0.25);
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .gallery-item .overlay span {
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* ============ MESSAGE ============ */
+    .message-section {
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(236,72,153,0.1) 0%, transparent 70%);
+    }
+
+    .message-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2rem;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .message-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(236,72,153,0.1), transparent, rgba(168,85,247,0.1), transparent);
+      animation: rotateGlow 8s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .message-box .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .message-box .quote-mark {
+      font-size: 4rem;
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(135deg, #f9a8d4, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .message-box blockquote {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1.5rem;
+    }
+
+    .message-box .author {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ============ COUNTDOWN ============ */
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      min-width: 100px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .countdown-item:hover {
+      transform: translateY(-5px);
+      border-color: rgba(236,72,153,0.3);
+    }
+
+    .countdown-item .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f9a8d4, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .countdown-item .label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.3rem;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer p {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+    }
+
+    footer .footer-heart {
+      display: inline-block;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      margin: 0 0.3rem;
+    }
+
+    /* ============ OBSERVER ANIMATIONS ============ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ============ STARS ============ */
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars Canvas -->
+  <canvas id="stars"></canvas>
+
+  <!-- Heart Particles Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Floating Hearts -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="emoji-big">💖</div>
+      <h1>iki gözümsün<br>ronyam</h1>
+      <p class="subtitle">
+        <span>Her satırı senin için yazıyorum, her kodda sen varsın...</span>
+      </p>
+      <div class="hero-emojis">
+        <span>💕</span>
+        <span>✨</span>
+        <span>💫</span>
+        <span>🌟</span>
+        <span>💖</span>
+        <span>🌹</span>
+        <span>💗</span>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>Aşağı Kaydır</span>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section>
+    <div class="container">
+      <h2 class="section-title fade-in">
+        <span class="highlight">Sana</span> Dair
+      </h2>
+      <p class="section-subtitle fade-in">
+        Her şey seninle başladı, seninle anlam kazandı.
+      </p>
+      <div class="about-grid">
+        <div class="about-card fade-in-left">
+          <div class="icon">🌟</div>
+          <h3>Işığım</h3>
+          <p>Karanlıkta yolumu bulmamı sağlayan en parlak yıldızsın. Varlığın her şeyi güzelleştiriyor.</p>
+        </div>
+        <div class="about-card fade-in-right">
+          <div class="icon">🌹</div>
+          <h3>İlhamım</h3>
+          <p>Her gülüşün yeni bir şiir, her bakışın yeni bir melodi. Sen benim en büyük ilham kaynağımsın.</p>
+        </div>
+        <div class="about-card fade-in-left">
+          <div class="icon">💪</div>
+          <h3>Gücüm</h3>
+          <p>Zor zamanlarda bana güç veren, düştüğümde kaldıran ellerin. Seninle her şey mümkün.</p>
+        </div>
+        <div class="about-card fade-in-right">
+          <div class="icon">🏠</div>
+          <h3>Evim</h3>
+          <p>Nereye gidersem gideyim, senin kalbinde buluyorum kendimi. Sen benim evimsin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section>
+    <div class="container">
+      <h2 class="section-title fade-in">
+        <span class="highlight">Birlikte</span> Geçen Zaman
+      </h2>
+      <p class="section-subtitle fade-in">
+        Her anı ayrı bir hazine, her günü ayrı bir masal.
+      </p>
+      <div class="timeline">
+        <div class="timeline-item" data-delay="100">
+          <div class="time-dot"></div>
+          <div class="time-content">
+            <div class="date">İlk Gün</div>
+            <h4>İlk Karşılaşma ✨</h4>
+            <p>Hayatımın en güzel tesadüfü. O an dünyanın durduğunu hissettim.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-delay="300">
+          <div class="time-dot"></div>
+          <div class="time-content">
+            <div class="date">Yeni Bir Başlangıç</div>
+            <h4>İlk "Seni Seviyorum" 💕</h4>
+            <p>Kalbimin ağzımdan çıkan ilk kelimesi. O günden beri her gün yeniden söylüyorum.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-delay="500">
+          <div class="time-dot"></div>
+          <div class="time-content">
+            <div class="date">Sonsuza Dek</div>
+            <h4>Hayatımızın Geri Kalanı 💖</h4>
+            <p>Her geçen gün daha da derinleşen bir sevgi. Seninle her an bir ömre bedel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section>
+    <div class="container">
+      <h2 class="section-title fade-in">
+        <span class="highlight">Güzel</span> Anılar
+      </h2>
+      <p class="section-subtitle fade-in">
+        Henüz fotoğraf karesine sığdıramadığımız, ama kalbimizde biriktirdiğimiz anılar...
+      </p>
+      <div class="gallery">
+        <div class="gallery-item scale-in" style="animation-delay: 0.1s">
+          🌅
+          <div class="overlay"><span>Gün Batımları</span></div>
+        </div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.2s">
+          ☕
+          <div class="overlay"><span>Kahve Kokusu</span></div>
+        </div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.3s">
+          🌙
+          <div class="overlay"><span>Ay Işığı</span></div>
+        </div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.4s">
+          🎵
+          <div class="overlay"><span>Bizim Şarkımız</span></div>
+        </div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.5s">
+          📖
+          <div class="overlay"><span>Yarım Kalan Hikaye</span></div>
+        </div>
+        <div class="gallery-item scale-in" style="animation-delay: 0.6s">
+          💫
+          <div class="overlay"><span>Sonsuzluk</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COUNTDOWN ===== -->
+  <section>
+    <div class="container">
+      <h2 class="section-title fade-in">
+        <span class="highlight">Sonsuz</span> Sevgimiz
+      </h2>
+      <p class="section-subtitle fade-in">
+        Zaman durmuyor ama sevgimiz her geçen gün büyüyor.
+      </p>
+      <div class="countdown-grid" id="countdown">
+        <div class="countdown-item scale-in">
+          <div class="number" id="days">00</div>
+          <div class="label">Gün</div>
+        </div>
+        <div class="countdown-item scale-in">
+          <div class="number" id="hours">00</div>
+          <div class="label">Saat</div>
+        </div>
+        <div class="countdown-item scale-in">
+          <div class="number" id="minutes">00</div>
+          <div class="label">Dakika</div>
+        </div>
+        <div class="countdown-item scale-in">
+          <div class="number" id="seconds">00</div>
+          <div class="label">Saniye</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MESSAGE ===== -->
+  <section class="message-section">
+    <div class="container">
+      <div class="message-box scale-in">
+        <div class="content">
+          <div class="quote-mark">"</div>
+          <blockquote>
+            Gözlerimin gördüğü en güzel şeysin, kalbimin hissettiği en derin duygu. İki gözümsün, bir tanemsin. Seni her şeyden çok seviyorum Ronyam.
+          </blockquote>
+          <div class="author">— Sonsuza Dek Senin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>
+      Made with <span class="footer-heart">💖</span> for you, Ronya
+    </p>
+  </footer>
+
+  <script>
+    // ============ FLOATING HEARTS ============
+    const heartsContainer = document.getElementById('floatingHearts');
+    const heartEmojis = ['💖', '💕', '💗', '💝', '💘', '❤️', '🩷', '💞'];
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (Math.random() * 20 + 14) + 'px';
+      heart.style.animationDuration = (Math.random() * 10 + 8) + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 15000);
+    }
+
+    for (let i = 0; i < 15; i++) createHeart();
+    setInterval(createHeart, 1200);
+
+    // ============ STARFIELD ============
+    const starCanvas = document.getElementById('stars');
+    const starCtx = starCanvas.getContext('2d');
+    let stars = [];
+
+    function resizeStarCanvas() {
+      starCanvas.width = window.innerWidth;
+      starCanvas.height = document.documentElement.scrollHeight;
+    }
+    resizeStarCanvas();
+    window.addEventListener('resize', resizeStarCanvas);
+
+    for (let i = 0; i < 200; i++) {
+      stars.push({
+        x: Math.random() * starCanvas.width,
+        y: Math.random() * starCanvas.height,
+        r: Math.random() * 1.5 + 0.3,
+        alpha: Math.random(),
+        speed: Math.random() * 0.005 + 0.002,
+      });
+    }
+
+    function drawStars() {
+      starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+      stars.forEach(star => {
+        star.alpha += star.speed;
+        if (star.alpha > 1 || star.alpha < 0.2) star.speed *= -1;
+        starCtx.beginPath();
+        starCtx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        starCtx.fillStyle = `rgba(255,255,255,${star.alpha * 0.6})`;
+        starCtx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+
+    // ============ PARTICLE HEARTS ============
+    const pCanvas = document.getElementById('particles-canvas');
+    const pCtx = pCanvas.getContext('2d');
+    let particles = [];
+
+    function resizeParticleCanvas() {
+      pCanvas.width = window.innerWidth;
+      pCanvas.height = window.innerHeight;
+    }
+    resizeParticleCanvas();
+    window.addEventListener('resize', resizeParticleCanvas);
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * pCanvas.width;
+        this.y = Math.random() * pCanvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.hue = Math.random() * 60 + 320; // pink to purple range
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > pCanvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > pCanvas.height) this.speedY *= -1;
+      }
+      draw() {
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        pCtx.fillStyle = `hsla(${this.hue}, 80%, 65%, ${this.opacity})`;
+        pCtx.fill();
+      }
+    }
+
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+    function animateParticles() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ============ SCROLL OBSERVER ============
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = el.dataset.delay || 0;
+          setTimeout(() => el.classList.add('visible'), parseInt(delay));
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .timeline-item').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ============ COUNTDOWN TIMER ============
+    function updateCountdown() {
+      const now = new Date();
+      const target = new Date('2026-06-15T00:00:00');
+      const diff = Math.max(0, target - now);
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const s = Math.floor((diff % (1000*60)) / 1000);
+      document.getElementById('days').textContent = String(d).padStart(2, '0');
+      document.getElementById('hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ============ PARALLAX ON SCROLL ============
+    document.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      document.querySelector('.hero').style.transform = `translateY(${scrolled * 0.3}px)`;
+      document.querySelector('.hero').style.opacity = 1 - Math.min(scrolled / 600, 0.5);
+    });
+  </script>
+</body>
+</html>
